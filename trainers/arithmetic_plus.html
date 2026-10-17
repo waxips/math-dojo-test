@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4fd">
+<meta name="description" content="Локальный тренажёр арифметики с короткими сериями заданий, подсказками и разбором решений."><title>Math Dojo · Арифметика</title>
+<style>
+:root{--bg:#f7f4fd;--paper:#fff;--ink:#2f2843;--muted:#847b98;--lav:#8a70d6;--lav-deep:#7256c0;--lav-pale:#f0eafb;--line:#e8e0f2;--success:#2f896f;--success-bg:#e8f8f1;--error:#b85c6d;--error-bg:#fff0f3;--shadow:0 18px 60px rgba(69,47,113,.09)}
+*{box-sizing:border-box}html{min-height:100%}body{margin:0;min-height:100vh;font-family:ui-rounded,"Nunito",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(ellipse at 4% 6%,#e9defb 0,transparent 31%),radial-gradient(ellipse at 96% 88%,#efe7fa 0,transparent 35%),var(--bg)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #bbaaf2;outline-offset:3px}button:disabled{cursor:default;opacity:.6}.app{max-width:1030px;margin:0 auto;padding:23px 22px 60px}.header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:27px}.brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:900;letter-spacing:-.6px;white-space:nowrap}#brand-text{display:inline-block;max-width:320px;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}.logo{width:38px;height:38px;border-radius:13px;background:var(--lav);display:grid;place-items:center;color:#fff;box-shadow:0 6px 15px #8a70d63a}.logo svg{width:23px;height:23px}.head-actions{display:flex;align-items:center;gap:10px}.topic-label{font-size:13px;font-weight:800;color:var(--lav-deep);background:var(--lav-pale);padding:9px 12px;border-radius:999px;max-width:330px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nav-btn{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--ink);font-weight:800;white-space:nowrap}.nav-btn:hover,.small-btn:hover{background:#f7f2ff}.layout{max-width:800px;margin:0 auto}.status{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px;color:var(--muted);font-size:13px;font-weight:800}.progress{display:flex;gap:6px;margin-bottom:19px}.progress span{height:7px;flex:1;background:#e9e2f2;border-radius:20px;transition:background .15s}.progress span.past{background:#b6a1e8}.progress span.now{background:var(--lav)}.card{background:var(--paper);border:1px solid #eee7f5;border-radius:29px;box-shadow:var(--shadow);padding:28px 32px 26px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--lav-deep);margin-bottom:15px}.prompt{font-size:clamp(20px,3.2vw,28px);font-weight:850;letter-spacing:-.55px;line-height:1.3;margin:0 0 12px}.math{font-size:clamp(28px,5vw,43px);font-weight:800;letter-spacing:.01em;line-height:1.4;margin:10px 0 20px;overflow-wrap:anywhere}.visual-wrap{display:flex;justify-content:center;margin:12px 0 21px}.graph-large{width:min(100%,540px);border-radius:20px;overflow:hidden;background:#fcfaff;border:1px solid #eee8f5}.graph-large svg,.graph-mini svg{display:block;width:100%;height:auto}.answers{margin-top:19px}.answer-label{display:block;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:9px}.inputs{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.answer-input{height:56px;min-width:0;width:min(100%,310px);border:2px solid #e4daf3;border-radius:16px;padding:12px 16px;background:#fdfbff;color:var(--ink);font-size:22px;font-weight:800;outline:0}.answer-input:focus{border-color:var(--lav);outline:0}.answer-input.pair{width:min(45%,190px)}.input-sep{font-size:24px;color:var(--muted)}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 4px}.choice{background:#fff;border:2px solid var(--line);border-radius:18px;padding:10px;min-width:0;text-align:left;transition:border-color .13s,background .13s,transform .13s}.choice:hover{border-color:#b9a4ed;background:#fcfaff}.choice.selected{border-color:var(--lav);background:#f6f1ff}.choice.correct{border-color:var(--success);background:#f0fbf6}.choice.wrong{border-color:var(--error);background:#fff3f5}.choice-header{display:flex;gap:7px;align-items:center;font-size:13px;font-weight:900;color:var(--muted);margin:0 0 6px}.choice-marker{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;background:#f0ebf8}.graph-mini{border-radius:12px;overflow:hidden;background:#fcfaff}.choice-text{font-size:19px;font-weight:850;padding:12px 9px;line-height:1.3}.actions{display:flex;gap:11px;align-items:center;margin-top:20px}.primary{flex:1;border:0;background:var(--lav);color:#fff;border-radius:16px;padding:15px 18px;min-height:54px;font-size:16px;font-weight:900;box-shadow:0 5px 0 #6c51b5;transition:transform .12s,box-shadow .12s}.primary:hover{background:var(--lav-deep)}.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #6c51b5}.secondary{border:1px solid var(--line);background:#fff;border-radius:16px;padding:15px 18px;min-height:54px;font-size:15px;font-weight:800;color:var(--ink)}.feedback{margin-top:17px;border-radius:15px;padding:14px 16px;font-size:15px;font-weight:750;line-height:1.5}.feedback.good{background:var(--success-bg);color:var(--success)}.feedback.bad{background:var(--error-bg);color:var(--error)}.feedback.neutral{background:var(--lav-pale);color:var(--lav-deep)}.bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}.small-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;color:var(--muted);font-size:13px;font-weight:800}.bottom-right{display:flex;gap:8px}.topic-overlay{position:fixed;inset:0;background:#29203770;display:flex;align-items:center;justify-content:center;z-index:30;padding:18px}.topic-dialog{width:min(100%,610px);max-height:min(80vh,730px);overflow:auto;background:#fff;border-radius:26px;padding:25px;box-shadow:0 24px 70px #281c3d3b}.dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.dialog-head h2{font-size:23px;margin:0}.close-btn{border:0;background:#f1ebf8;width:36px;height:36px;border-radius:12px;font-size:22px;color:var(--ink)}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.topic-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);padding:13px;border:1px solid var(--line);border-radius:16px;font-weight:800}.topic-link:hover{border-color:var(--lav);background:#faf7ff}.topic-link.active{border-color:var(--lav);background:var(--lav-pale)}.topic-emoji{display:grid;place-items:center;flex:0 0 36px;height:36px;background:var(--lav-pale);border-radius:12px;font-size:19px}.summary{text-align:center;padding:25px 0 14px}.summary-icon{display:grid;place-items:center;width:68px;height:68px;border-radius:22px;margin:0 auto 16px;background:var(--lav-pale);font-size:30px}.summary h2{font-size:28px;margin:0 0 12px}.summary p{font-size:17px;color:var(--muted);margin:0 0 22px}.hidden{display:none!important}
+@media(max-width:640px){#brand-text{max-width:190px}.app{padding:14px 12px 38px}.header{margin-bottom:20px}.brand{font-size:17px}.topic-label{display:none}.layout{max-width:100%}.card{padding:22px 17px 22px;border-radius:23px}.prompt{font-size:21px}.math{font-size:31px;margin:9px 0 16px}.choice-grid{gap:9px}.choice{padding:7px;border-radius:14px}.choice-header{margin-bottom:4px}.actions{gap:8px}.primary,.secondary{min-height:51px;padding:12px;font-size:15px}.topic-dialog{padding:19px}.topic-grid{grid-template-columns:1fr}.answer-input{width:100%}.answer-input.pair{width:calc(50% - 18px)}.graph-large{width:100%}}
+@media(max-width:360px){.choice-grid{grid-template-columns:1fr}.brand{font-size:15px}.logo{width:34px;height:34px}.card{padding:19px 14px}.small-btn{padding:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Focused arithmetic extension of Math Dojo's offline lavender design */
+body{background:radial-gradient(ellipse at 3% 3%,#e7ddfc 0,transparent 40%),radial-gradient(ellipse at 96% 88%,#ede5f9 0,transparent 42%),var(--bg)}
+.app{max-width:980px}.layout{max-width:790px}.brand-sub{color:#817095;font-size:13px;font-weight:700;margin-left:6px;letter-spacing:0}
+.hero-card{padding:34px 36px 32px}.pill{display:inline-block;border-radius:999px;background:var(--lav-pale);color:#7155b6;font-weight:850;font-size:12px;padding:8px 12px;letter-spacing:.02em}
+.hero-title{font-size:clamp(29px,5vw,41px);letter-spacing:-1.2px;line-height:1.12;margin:17px 0 11px;font-weight:900}
+.hero-copy{font-size:16px;color:#77708d;line-height:1.65;margin:0 0 25px;max-width:630px}
+.setting-label{font-weight:850;color:#3c3054;font-size:15px;margin:19px 0 10px}
+.category-options{display:flex;flex-wrap:wrap;gap:9px}.category-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:11px 14px;color:#514461;font-size:14px;font-weight:800}.category-chip:hover,.category-chip:focus-visible{border-color:#a48be6}.category-chip.active{background:#f0eafb;border-color:#9275d9;color:#5d439c;box-shadow:inset 0 0 0 1px #9275d9}
+.chip-icon{font-weight:900;font-size:18px}.segmented{display:flex;gap:8px;flex-wrap:wrap}.segmented button{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 17px;font-size:14px;font-weight:850;color:#706781}.segmented button.selected{border-color:#8d6fd3;background:var(--lav-pale);color:#6647b4}
+.setup-footer{margin:27px 0 0;display:flex;align-items:center;gap:16px}.setup-footer .primary{flex:0 1 225px}.fineprint{font-size:12px;color:#958ca4;line-height:1.5;margin:0}
+.lesson-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.quiet-btn{background:transparent;border:0;color:#867895;font-size:13px;font-weight:800;padding:8px}.quiet-btn:hover{color:#644d9e}
+.lesson-stats{display:flex;justify-content:space-between;gap:10px;color:#817890;font-size:13px;font-weight:800;margin:0 0 10px;flex-wrap:wrap}.lesson-track{width:100%;height:10px;background:#e9e2f4;border-radius:100px;overflow:hidden;margin-bottom:20px}.lesson-fill{height:100%;width:0;background:linear-gradient(90deg,#9c82e0,#7454c5);border-radius:100px;transition:width .25s}
+.task-card{padding:34px 38px}.task-meta{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}.task-category{color:#6651a0;background:#f0ebfb;font-size:12px;font-weight:900;padding:8px 12px;border-radius:99px}.task-mode{background:#f8f6fd;border:1px solid #eae2f4;color:#857797;font-size:12px;font-weight:800;padding:7px 11px;border-radius:99px}
+.task-title{font-size:19px;font-weight:850;margin:0 0 10px;color:#4d425d}.task-math{font-size:clamp(35px,7vw,56px);font-weight:850;letter-spacing:-1px;line-height:1.27;margin:17px 0 28px;color:#302344;overflow-wrap:anywhere}
+.task-math .math-exponent{font-size:.88em;line-height:0;vertical-align:baseline;position:relative;top:-.22em;font-weight:800;margin-left:.02em;letter-spacing:0}
+.step-heading{font-size:13px;color:#8a7b9c;font-weight:800;margin-bottom:11px}.answer-input{font-size:24px;height:66px;max-width:345px;border-radius:16px}.answer-input.invalid{border-color:#cc7a96}.answer-choice-area{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.number-choice{border:2px solid #e7e0f1;background:#fff;border-radius:16px;min-height:75px;padding:13px 15px;display:flex;align-items:center;gap:14px;text-align:left;color:#3b3055;transition:border-color .14s,background .14s}
+.number-choice:hover{border-color:#ae97e6;background:#faf8ff}.number-choice.selected{border-color:#8866da;background:#f5f0ff}.number-choice.correct{border-color:#52aa8a;background:#ebfaf3}.number-choice.wrong{border-color:#cf7a92;background:#fff4f6}.number-choice:disabled{opacity:1}
+.choice-letter{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#f2edf9;color:#87749f;font-size:14px;font-weight:900;flex-shrink:0}.choice-value{font-size:23px;font-weight:850;word-break:break-word}
+.notice{margin-top:15px;border-radius:13px;padding:12px 15px;font-size:14px;font-weight:750;line-height:1.5}.notice.good{background:#e9f9f2;color:#277e65}.notice.bad{background:#fff0f3;color:#ad4f68}.notice.neutral,.notice.hint{background:#f1ebfc;color:#7655ac}
+.explanation{margin-top:12px;padding:14px 15px;background:#faf9fe;border-left:3px solid #a28bdc;color:#5f5273;font-size:14px;line-height:1.6;border-radius:0 11px 11px 0}
+.task-card .actions{margin-top:21px}.exercise-bottom{display:flex;justify-content:space-between;gap:8px;margin-top:14px;flex-wrap:wrap}.bottom-right{display:flex;gap:8px;flex-wrap:wrap}.small-btn{font-size:13px}.small-btn.warn{color:#ad627a}
+.finish-card{padding:42px;text-align:center}.finish-icon{font-size:40px;margin-bottom:10px}.finish-title{font-size:32px;letter-spacing:-1px;margin:5px 0 8px}.final-score{font-size:54px;font-weight:900;color:#7b59c8;margin:12px 0}.finish-copy{line-height:1.65;color:#7a708d;max-width:540px;margin:0 auto 16px}.weak-areas{margin:20px auto 24px;padding:14px;border:1px solid var(--line);border-radius:15px;max-width:520px;line-height:1.6;color:#756786;font-size:14px}.weak-tags{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:10px}.weak-tags span{border-radius:99px;background:#f0eafb;padding:6px 10px;color:#6c50ad;font-size:12px;font-weight:850}.finish-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.finish-actions .primary{flex:0 1 225px}.finish-actions .secondary{flex:0 1 225px}
+@media(max-width:640px){.app{padding:15px 12px 30px}.hero-card,.task-card,.finish-card{padding:23px 18px}.hero-title{font-size:31px}.hero-copy{font-size:14px}.category-chip{padding:10px 11px;font-size:13px}.lesson-top{margin-bottom:7px}.task-math{font-size:39px;margin:16px 0 25px}.number-choice{min-height:68px;padding:10px 11px}.choice-value{font-size:20px}.choice-letter{width:26px;height:26px}.setup-footer{flex-direction:column;align-items:stretch}.setup-footer .primary{flex:auto}.fineprint{text-align:center}.brand-sub{display:none}.task-card .actions{margin-top:17px}.finish-title{font-size:26px}}
+@media(max-width:380px){.answer-choice-area{gap:8px}.choice-value{font-size:18px}.number-choice{padding:7px 9px}.header{align-items:flex-start}}
+
+
+.hub-nav{display:inline-flex;align-items:center;padding:9px 13px;border:1px solid #e8e0f2;background:white;color:#624b94;border-radius:12px;text-decoration:none;font-weight:800;font-size:13px}.hub-nav:hover{background:#f0eafb}
+@media(max-width:640px){.hub-nav{font-size:12px;padding:8px 10px}}
+</style></head><body><div class="app">
+<header class="header"><div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.4c1.5 0 2.2 3.2 2.2 4.5 1-1 3.7-2.8 4.8-1.7 1 1-1 3.7-2.1 4.7 1.3 0 4.5.7 4.5 2.2s-3.2 2.2-4.5 2.2c1 1 3 3.7 2.1 4.8-1.1 1-3.8-.9-4.8-2.1 0 1.3-.7 4.5-2.2 4.5s-2.2-3.2-2.2-4.5c-1 1.2-3.7 3.1-4.8 2.1-1-1.1 1-3.8 2.1-4.5-.7-4.5-2.2-4.5s-2.2 3.2-2.2 4.5c-1-1-3.7-3.1-4.8-2.1-1-1.1 1-3.8 2.1-4.8-1.3 0-4.5-.7-4.5-2.2s3.2-2.2 4.5-2.2C5.7 10.9 3.8 8.2 4.8 7.2c1.1-1.1 3.8.8 4.8 1.7C9.6 7.6 10.3 3.4 12 3.4Z" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="2" fill="white"/></svg></span><span>Math Dojo <span class="brand-sub" id="student-name">· Арифметика</span></span></div><a class="hub-nav" href="../index.html">← Каталог</a></header>
+<main class="layout">
+<section id="setup-screen" class="card hero-card">
+  <div class="pill">АРИФМЕТИЧЕСКИЙ ТРЕНАЖЁР</div><h1 class="hero-title">Считаем увереннее ✦</h1>
+  <p class="hero-copy">Короткие серии заданий для спокойной отработки вычислений. Где-то нужно вписать ответ, где-то — выбрать один вариант. После ошибки можно взять подсказку и дойти до правильного решения с пониманием.</p>
+  <div class="setting-label">Что тренируем?</div><div id="category-options" class="category-options" role="group" aria-label="Тема тренировки"></div>
+  <div class="setting-label">Сложность</div><div class="segmented" role="group" aria-label="Сложность"><button type="button" data-level="1">База</button><button type="button" data-level="2">Уверенно</button><button type="button" data-level="3">Посложнее</button></div>
+  <div class="setting-label">Длина тренировки</div><div class="segmented" role="group" aria-label="Число заданий"><button type="button" data-length="8">8 заданий</button><button type="button" data-length="12">12 заданий</button><button type="button" data-length="20">20 заданий</button></div>
+  <div class="setup-footer"><button id="start" type="button" class="primary">Начать тренировку →</button><p class="fineprint">Выбери тему, сложность и длину серии. Начать можно с короткой базы, а потом переходить к более уверенным вычислениям.</p></div>
+</section>
+<section id="play-screen" class="hidden">
+ <div class="lesson-top"><span class="pill">АРИФМЕТИКА · ПРАКТИКА</span><button type="button" class="quiet-btn" id="back-setup">← К настройкам</button></div>
+ <div class="lesson-stats"><span id="counter"></span><span id="score"></span></div><div class="lesson-track" aria-label="Прогресс серии"><div class="lesson-fill" id="progress-fill"></div></div>
+ <section class="card task-card"><div class="task-meta"><span class="task-category" id="task-category"></span><span class="task-mode" id="task-mode"></span></div>
+ <h1 class="task-title">Вычисли значение</h1><div class="task-math" id="task-math"></div>
+ <div class="step-heading" id="step-heading"></div>
+ <div id="answer-input-area"><label for="answer-input" class="answer-label">Твой ответ</label><input class="answer-input" id="answer-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Например, 12 или 1/2" aria-label="Введи свой ответ"></div>
+ <div id="answer-choice-area" class="answer-choice-area hidden" role="group" aria-label="Варианты ответов"></div>
+ <div id="hint-box" class="notice hidden" role="status" aria-live="polite"></div><div id="feedback-box" class="notice hidden" role="status" aria-live="polite"></div><div id="explanation" class="explanation hidden"></div>
+ <div class="actions"><button type="button" class="primary" id="submit">Проверить</button></div></section>
+ <div class="exercise-bottom"><button type="button" class="small-btn" id="hint">✦ Подсказка</button><div class="bottom-right"><button type="button" class="small-btn warn hidden" id="give-up">Показать ответ</button><button type="button" class="small-btn" id="skip">Пропустить</button></div></div>
+</section>
+<section id="finish-screen" class="card finish-card hidden"><div class="finish-icon">✦</div><h2 id="final-title" class="finish-title">Тренировка завершена</h2><div class="final-score" id="final-score"></div><p id="final-description" class="finish-copy"></p><div class="weak-areas" id="weak-areas"></div><div class="finish-actions"><button class="primary" id="again" type="button">Ещё одну серию →</button><button class="secondary" id="change-settings" type="button">Другие настройки</button></div></section>
+</main></div>
+<script>
+/* НАСТРОЙКА ДЛЯ ПРЕПОДАВАТЕЛЯ (необязательно):
+studentName — подпись в шапке; defaultLevel — 1, 2 или 3;
+sessionLength — 8, 12 или 20; seed: null — новый набор каждый раз.
+*/
+window.MATH_DOJO_ARITHMETIC_CONFIG = {studentName:'', defaultLevel:1, sessionLength:12, seed:null};
+</script>
+<script>
+/* Math Dojo · Арифметика. Самостоятельный локальный тренажёр. */
+(()=>{
+'use strict';
+const CONFIG = Object.assign({studentName:'',defaultLevel:1,sessionLength:12,seed:null},window.MATH_DOJO_ARITHMETIC_CONFIG||{});
+let seed = CONFIG.seed === null ? null : (Number(CONFIG.seed)>>>0);
+const random = ()=>{if(seed===null)return Math.random();let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
+const ri=(a,b)=>a+Math.floor(random()*(b-a+1));
+const pick=a=>a[ri(0,a.length-1)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){let j=ri(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
+const $=id=>document.getElementById(id);
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b];}return a||1;};
+const tidy=x=>Math.round(x*1000000)/1000000;
+const fmt=n=>String(tidy(n)).replace('.',',').replace('-', '−');
+const catTitles={mixed:'Всё понемногу',basic:'Сложение и вычитание',multiply:'Умножение и деление',signed:'Отрицательные числа',order:'Порядок действий',decimal:'Десятичные числа',fraction:'Простые дроби',power:'Степени и скобки'};
+const catIcons={mixed:'✦',basic:'＋',multiply:'×',signed:'±',order:'( )',decimal:'0,5',fraction:'½',power:'x²'};
+const categoryOrder=['mixed','basic','multiply','signed','order','decimal','fraction','power'];
+const state={category:'mixed',level:Math.max(1,Math.min(3,Number(CONFIG.defaultLevel)||1)),length:[8,12,20].includes(Number(CONFIG.sessionLength))?Number(CONFIG.sessionLength):12,questions:[],index:0,score:0,streak:0,maxStreak:0,attempts:0,finished:false,selected:null,done:false,missed:[],lastWrong:false,hintSeen:false};
+const signed=(n)=>n<0?`− ${fmt(-n)}`:`+ ${fmt(n)}`;
+const asTask=(category,math,value,hint,explain,extra={})=>({category,math,value:tidy(value),hint,explain, ...extra});
+
+function basic(level){
+ let a,b,op;
+ if(level===1){a=ri(2,30);b=ri(2,25);op=pick(['+','−']);if(op==='−'&&b>a)[a,b]=[b,a];}
+ else if(level===2){a=ri(12,99);b=ri(11,90);op=pick(['+','−']);if(op==='−'&&b>a)[a,b]=[b,a];}
+ else {a=ri(22,250);b=ri(15,180);op=pick(['+','−']);}
+ const ans=op==='+'?a+b:a-b;
+ return asTask('basic',`${a} ${op} ${b} = ?`,ans,op==='+'?'Можно сложить десятки отдельно от единиц.':'При вычитании попробуй отнять сначала десятки, потом единицы.',`${a} ${op} ${b} = ${fmt(ans)}.`,{traps:[a+b,a-b,b-a,Math.abs(a-b)]});
+}
+function multiply(level){
+ const div=random()<.43;
+ if(div){const b=ri(2,level===1?9:level===2?12:15),q=ri(2,level===1?10:level===2?12:17),a=b*q;
+ return asTask('multiply',`${a} ÷ ${b} = ?`,q,`Какое число при умножении на ${b} даст ${a}?`,`${b} × ${q} = ${a}, значит ${a} ÷ ${b} = ${q}.`,{traps:[b,q+b,q-1,q+1]});}
+ const a=ri(2,level===1?9:level===2?12:17),b=ri(2,level===1?9:level===2?12:15),val=a*b;
+ return asTask('multiply',`${a} × ${b} = ?`,val,`Можно представить ${a} × ${b} как ${b} групп по ${a}.`,`${a} × ${b} = ${val}.`,{traps:[a+b,val+a,val-b,val+1]});
+}
+function signedNumbers(level){
+ const a=ri(2,level===1?12:level===2?22:40),b=ri(1,level===1?12:level===2?25:45);
+ const mode=ri(0,3);
+ if(mode===0)return asTask('signed',`−${a} + ${b} = ?`,b-a,'Начни в точке с отрицательным числом и двигайся вправо.',`−${a} + ${b} = ${fmt(b-a)}.`,{traps:[a+b,a-b,-(a+b)]});
+ if(mode===1){const t=b+ri(0,level===1?4:12);return asTask('signed',`${a} − ${a+t} = ?`,-t,'Вычитаем число больше исходного: ответ будет отрицательным.',`${a} − ${a+t} = −${t}.`,{traps:[t,a+t,a]});}
+ if(mode===2){const val=a*b;return asTask('signed',`(−${a}) × (−${b}) = ?`,val,'Произведение двух отрицательных чисел положительно.',`(−${a}) × (−${b}) = ${val}.`,{traps:[-val,a+b,-a-b]});}
+ return asTask('signed',`(−${a}) × ${b} = ?`,-a*b,'У отрицательного и положительного множителей произведение отрицательное.',`(−${a}) × ${b} = ${fmt(-a*b)}.`,{traps:[a*b,a-b,-(a+b)]});
+}
+// Keep subtraction mode small enough for mental arithmetic.
+function signedSafe(level){return signedNumbers(level);}
+function order(level){
+ const a=ri(2,level===1?12:24),b=ri(2,level===1?8:12),c=ri(2,level===1?6:11),type=ri(0,3);
+ if(type===0){const val=a+b*c;return asTask('order',`${a} + ${b} × ${c} = ?`,val,'Умножение выполняется раньше сложения.',`Сначала ${b} × ${c} = ${b*c}; затем ${a} + ${b*c} = ${val}.`,{traps:[(a+b)*c,a+b+c,a*c+b]});}
+ if(type===1){const val=(a+b)*c;return asTask('order',`(${a} + ${b}) × ${c} = ?`,val,'Сначала вычисли выражение в скобках.',`Сначала ${a} + ${b} = ${a+b}; затем ${a+b} × ${c} = ${val}.`,{traps:[a+b*c,a*b+c,a+b+c]});}
+ if(type===2){const val=a*b-c;return asTask('order',`${a} × ${b} − ${c} = ?`,val,'Сначала умножение, затем вычитание.',`${a} × ${b} = ${a*b}; ${a*b} − ${c} = ${val}.`,{traps:[a*(b-c),a+b-c,a*b+c]});}
+ const val=a*(b-c);return asTask('order',`${a} × (${b} − ${c}) = ?`,val,'Сначала вычисли разность в скобках.',`${b} − ${c} = ${b-c}; затем ${a} × ${b-c} = ${fmt(val)}.`,{traps:[a*b-c,a*(b+c),a+b-c]});
+}
+function decimal(level){
+ const precision=level===1?10:level===2?10:100;
+ const a=ri(2,level===3?800:90)/precision,b=ri(1,level===3?600:80)/precision;
+ const mode=ri(0,level===1?1:3);
+ if(mode===0)return asTask('decimal',`${fmt(a)} + ${fmt(b)} = ?`,a+b,'Складывай десятые с десятыми, сотые с сотыми.',`${fmt(a)} + ${fmt(b)} = ${fmt(a+b)}.`,{traps:[a+b+.1,a+b-.1,a+b+1]});
+ if(mode===1)return asTask('decimal',`${fmt(a)} − ${fmt(b)} = ?`,a-b,'Запиши числа так, чтобы запятые стояли друг под другом.',`${fmt(a)} − ${fmt(b)} = ${fmt(a-b)}.`,{traps:[b-a,a+b,a-b+.1]});
+ if(mode===2){let m=pick([2,3,4,5]);return asTask('decimal',`${fmt(a)} × ${m} = ?`,a*m,'Сначала умножь как целые числа, затем верни запятую.',`${fmt(a)} × ${m} = ${fmt(a*m)}.`,{traps:[a+m,a*m*10,a*m/10]});}
+ const m=pick([2,4,5,10]);return asTask('decimal',`${fmt(a*m)} ÷ ${m} = ?`,a,`Проверь ответ обратным умножением на ${m}.`,`${fmt(a*m)} ÷ ${m} = ${fmt(a)}.`,{traps:[a*m,a/10,a*10]});
+}
+function fraction(level){
+ const d=pick(level===1?[2,3,4,5,8]:level===2?[3,4,5,6,8,10]:[4,6,8,9,10,12]);
+ const n1=ri(1,d-1),n2=ri(1,d-1);const minus=random()<.45;
+ const n=minus?n1-n2:n1+n2;
+ const fmtFraction=(n,d)=>{if(n===0)return '0';const g=gcd(n,d);const a=n/g,b=d/g;return b===1?String(a):`${a}/${b}`;};
+ const v=n/d;
+ const math=`${n1}/${d} ${minus?'−':'+'} ${n2}/${d} = ?`;
+ const explain=`Знаменатель общий: ${n1} ${minus?'−':'+'} ${n2} = ${n}; получаем ${fmtFraction(n,d)}.`;
+ const opts=[(n1+n2)/d,(n1-n2)/d,(n1*n2)/(d*d),(n1+n2)/(2*d),(n+1)/d,(n-1)/d].map(tidy);
+ return asTask('fraction',math,v,'При одинаковых знаменателях складываются или вычитаются только числители.',explain,{isFraction:true,den:d,traps:opts});
+}
+function power(level){
+ const a=ri(2,level===1?7:level===2?11:15),mode=ri(0,3);
+ if(mode===0)return asTask('power',`${a}² = ?`,a*a,`Квадрат означает ${a} × ${a}.`,`${a}² = ${a*a}.`,{traps:[a*2,a*a+a,(a+1)*(a+1)]});
+ if(mode===1)return asTask('power',`(−${a})² = ?`,a*a,'В скобках стоит всё отрицательное число: квадрат относится и к знаку «минус».',`(−${a})² = (−${a}) × (−${a}) = ${a*a}.`,{traps:[-a*a,a*2,-a*2],signRule:'inside'});
+ if(mode===2)return asTask('power',`−(${a}²) = ?`,-a*a,'Минус находится снаружи скобок: сначала возведи положительное число в квадрат, затем возьми число с минусом.',`−(${a}²) = −(${a} × ${a}) = ${fmt(-a*a)}. Без внешних скобок запись −${a}² означает то же самое.`,{traps:[a*a,-2*a,-a],signRule:'outside'});
+ const n=level===1?2:ri(2,3),v=a**n;return asTask('power',`${a}${n===2?'²':'³'} = ?`,v,'Степень показывает, сколько раз число используется как множитель.',`${a}${n===2?'²':'³'} = ${v}.`,{traps:[a*n,a**(n-1),a**(n+1)]});
+}
+const makers={basic,multiply,signed:signedSafe,order,decimal,fraction,power};
+function makeProblem(cat){return makers[cat](state.level);}
+function generateSession(){
+ const cats=state.category==='mixed'?Object.keys(makers):[state.category];let problems=[],used=new Set();
+ let plan=Array.from({length:state.length},(_,i)=>cats[i%cats.length]);if(state.category==='mixed')plan=shuffle(plan);
+ for(let i=0;i<state.length;i++){
+   let q;for(let retry=0;retry<75;retry++){q=makeProblem(plan[i]);let id=`${q.category}|${q.math}`;if(!used.has(id)){used.add(id);break;}}
+   const choice=(i%2===1);q.kind=choice?'choice':'input';if(choice){const opts=makeChoices(q);q.choices=opts.choices;q.correct=opts.correct;}
+   problems.push(q);
+ }
+ return problems;
+}
+function makeChoices(q){
+ const vals=[q.value],used=new Set([tidy(q.value).toFixed(6)]);
+ const add=v=>{v=tidy(v);if(!Number.isFinite(v)||Math.abs(v)>100000||used.has(v.toFixed(6)))return;vals.push(v);used.add(v.toFixed(6));};
+ (q.traps||[]).forEach(add);
+ const increments=q.isFraction?[1/q.den,2/q.den,.5,1,2]:Number.isInteger(q.value)?[1,2,3,5,10]:[.1,.2,.5,1,.01];
+ let n=0;while(vals.length<4&&n++<160){const step=pick(increments)*ri(1,3);const sign=pick([-1,1]);add(q.value+step*sign);}
+ const options=shuffle(vals.slice(0,4));return{choices:options,correct:options.findIndex(v=>Math.abs(v-q.value)<1e-6)};
+}
+function fractionText(value,den){if(Math.abs(value)<1e-8)return '0';const num=Math.round(value*den);if(Math.abs(num/den-value)>1e-6)return fmt(value);const g=gcd(num,den);const n=num/g,d=den/g;return d===1?String(n):`${n}/${d}`;}
+function answerText(q,v){return q.isFraction?fractionText(v,q.den):fmt(v);}
+function parseInput(raw){const s=String(raw).trim().replace(/\s/g,'').replace(/−/g,'-').replace(',','.');
+ if(/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)\/[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s)){
+  const [a,b]=s.split('/').map(Number);return b!==0?a/b:NaN;
+ }
+ return /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s)?Number(s):NaN;
+}
+function show(which){['setup-screen','play-screen','finish-screen'].forEach(id=>$(id).classList.toggle('hidden',id!==which));}
+function buildSetup(){
+ $('category-options').innerHTML=categoryOrder.map(id=>`<button type="button" class="category-chip ${id===state.category?'active':''}" data-category="${id}" aria-pressed="${id===state.category}"><span class="chip-icon">${catIcons[id]}</span>${catTitles[id]}</button>`).join('');
+ $('category-options').querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{state.category=b.dataset.category;buildSetup();});
+ document.querySelectorAll('[data-level]').forEach(b=>{const active=Number(b.dataset.level)===state.level;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active?'true':'false');});
+ document.querySelectorAll('[data-length]').forEach(b=>{const active=Number(b.dataset.length)===state.length;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active?'true':'false');});
+}
+function start(){state.questions=generateSession();state.index=0;state.score=0;state.streak=0;state.maxStreak=0;state.missed=[];state.finished=false;show('play-screen');renderProblem();}
+function p(){return state.questions[state.index];}
+// Keep exponent positioning legible across browsers and platforms.
+// textContent is used for all source segments (never inject generated HTML).
+function renderMath(expression){
+ const target=$('task-math');target.replaceChildren();
+ target.setAttribute('role','math');target.setAttribute('aria-label',expression);
+ for(const part of expression.split(/([²³])/)){
+  if(part==='²'||part==='³'){
+   const sup=document.createElement('sup');sup.className='math-exponent';
+   sup.textContent=part;target.appendChild(sup);
+  }else if(part){target.appendChild(document.createTextNode(part));}
+ }
+}
+function renderProblem(){
+ const q=p();state.selected=null;state.attempts=0;state.done=false;state.lastWrong=false;state.hintSeen=false;
+ $('counter').textContent=`Задание ${state.index+1} из ${state.length}`;
+ $('score').textContent=`${state.score} верно с первого раза`;
+
+ $('progress-fill').style.width=`${100*state.index/state.length}%`;
+ $('task-category').textContent=catTitles[q.category];
+ $('task-mode').textContent=q.kind==='input'?'Впиши ответ':'Выбери один ответ';
+ renderMath(q.math);
+ $('answer-input-area').classList.toggle('hidden',q.kind!=='input');
+ $('answer-choice-area').classList.toggle('hidden',q.kind!=='choice');
+ $('answer-input').value='';$('answer-input').disabled=false;
+ $('answer-input').classList.remove('invalid');
+ $('answer-choice-area').innerHTML='';
+ if(q.kind==='choice'){
+ q.choices.forEach((value,i)=>{let b=document.createElement('button');b.type='button';b.className='number-choice';b.innerHTML=`<span class="choice-letter">${'АБВГ'[i]}</span><span class="choice-value"></span>`;b.querySelector('.choice-value').textContent=answerText(q,value);b.addEventListener('click',()=>select(i));$('answer-choice-area').appendChild(b);});
+ }
+ $('hint-box').className='notice hidden';$('feedback-box').className='notice hidden';$('explanation').className='explanation hidden';
+ $('submit').textContent='Проверить';$('submit').disabled=false;
+ $('hint').disabled=false;$('give-up').classList.add('hidden');$('give-up').disabled=false;
+ $('skip').classList.remove('hidden');$('step-heading').textContent=q.kind==='input'?'Введи число или дробь':'Отметь подходящий вариант';
+}
+function select(i){if(state.done)return;state.selected=i;[...$('answer-choice-area').children].forEach((b,k)=>{b.classList.toggle('selected',k===i);b.setAttribute('aria-pressed',k===i?'true':'false');});}
+function showNotice(id,kind,message){const el=$(id);el.className='notice '+kind;el.textContent=message;}
+function showHint(){if(state.done)return;state.hintSeen=true;showNotice('hint-box','hint',p().hint);}
+function showExplanation(answerShown=false){const q=p();$('explanation').textContent=(answerShown?`Ответ: ${answerText(q,q.value)}. `:'')+q.explain;$('explanation').classList.remove('hidden');}
+function resolve(correct,reason){
+ const q=p();state.done=true;
+ if(correct&&state.attempts===1){state.score++;state.streak++;state.maxStreak=Math.max(state.streak,state.maxStreak);}else{state.streak=0;state.missed.push({category:q.category,math:q.math,answer:answerText(q,q.value),why:reason||'Не с первой попытки'});}
+ $('score').textContent=`${state.score} верно с первого раза`;
+
+ $('answer-input').disabled=true;
+ [...$('answer-choice-area').children].forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add('correct');});
+ $('hint').disabled=true;$('give-up').classList.add('hidden');$('skip').classList.add('hidden');
+ showExplanation(!correct);showNotice('feedback-box',correct?'good':'neutral',correct?'Верно.':'Разобрали ответ — идём дальше.');$('submit').textContent=state.index===state.length-1?'К результатам':'Дальше';
+}
+function check(){if(state.done){next();return;}
+ const q=p();let got;
+ if(q.kind==='choice'){if(state.selected===null){showNotice('feedback-box','neutral','Сначала выбери один вариант.');return;}got=q.choices[state.selected];}
+ else {got=parseInput($('answer-input').value);if(!Number.isFinite(got)){showNotice('feedback-box','neutral','Введи число. Можно использовать запятую, точку или дробь 1/2.');$('answer-input').classList.add('invalid');return;}}
+ state.attempts++;const okay=Math.abs(got-q.value)<1e-6;
+ if(okay){resolve(true);return;}
+ state.lastWrong=true;state.streak=0;
+ $('answer-input').classList.add('invalid');
+ const reversedSign=(q.signRule&&Math.abs(got+q.value)<1e-6);
+ const helpful=reversedSign?(q.signRule==='outside'
+  ?'Посмотри на скобки: минус снаружи, поэтому возводится в квадрат только число. После этого результат становится отрицательным.'
+  :'Посмотри на скобки: минус внутри, поэтому в квадрат возводится всё отрицательное число. Два минуса при умножении дают плюс.')
+  :'Пока не совпало. Попробуй ещё — подсказка доступна ниже.';
+ showNotice('feedback-box','bad',helpful);$('give-up').classList.remove('hidden');
+ if(q.kind==='choice'){[...$('answer-choice-area').children].forEach((b,i)=>b.classList.toggle('wrong',i===state.selected));}
+}
+function reveal(){if(state.done)return;state.attempts=Math.max(1,state.attempts);resolve(false,'Показан ответ');}
+function skip(){if(state.done)return;state.attempts=0;resolve(false,'Пропущено');}
+function next(){if(state.index+1===state.length){finish();return;}state.index++;renderProblem();}
+function finish(){state.finished=true;$('progress-fill').style.width='100%';$('final-score').textContent=`${state.score} / ${state.length}`;
+ const pct=state.score/state.length;
+ $('final-title').textContent=pct===1?'Отличная серия!':pct>=.75?'Хорошая работа!':'Тренировка завершена';
+ $('final-description').textContent=`Верно с первой попытки: ${Math.round(pct*100)}%. ${state.missed.length?'Посмотри, какие темы стоит повторить.':'Все вычисления получились с первой попытки.'}`;
+ const counts={};state.missed.forEach(q=>counts[q.category]=(counts[q.category]||0)+1);
+ const ranked=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+ $('weak-areas').innerHTML='';if(ranked.length){const label=document.createElement('strong');label.textContent='Что полезно повторить';$('weak-areas').appendChild(label);const wrap=document.createElement('div');wrap.className='weak-tags';ranked.slice(0,3).forEach(c=>{const span=document.createElement('span');span.textContent=`${catTitles[c]} · ${counts[c]}`;wrap.appendChild(span);});$('weak-areas').appendChild(wrap);}
+ else {$('weak-areas').textContent='Все задания решены с первого раза 🎉';}
+ show('finish-screen');}
+function init(){
+ if(CONFIG.studentName){$('student-name').textContent=`· ${String(CONFIG.studentName).slice(0,40)}`;}
+ buildSetup();
+ document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{state.level=Number(b.dataset.level);buildSetup();});
+ document.querySelectorAll('[data-length]').forEach(b=>b.onclick=()=>{state.length=Number(b.dataset.length);buildSetup();});
+ $('start').onclick=start;$('submit').onclick=check;$('hint').onclick=showHint;$('give-up').onclick=reveal;$('skip').onclick=skip;
+ $('again').onclick=start;$('change-settings').onclick=()=>{buildSetup();show('setup-screen');};
+ $('back-setup').onclick=()=>{if(confirm('Вернуться к настройкам? Текущая серия не сохранится.')){buildSetup();show('setup-screen');}};
+ $('answer-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();check();}});
+ $('answer-input').addEventListener('input',()=>{$('answer-input').classList.remove('invalid');});
+ document.addEventListener('keydown',e=>{if($('play-screen').classList.contains('hidden')||state.done||e.target.tagName==='INPUT')return;const n='1234'.indexOf(e.key);if(n>=0&&p().kind==='choice'){e.preventDefault();select(n);}
+ if(e.key==='Enter'){e.preventDefault();check();}});
+}
+init();
+})();
+
+</script></body></html>
