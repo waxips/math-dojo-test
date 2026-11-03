@@ -1,0 +1,248 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later — Copyright (C) 2026 Math Dojo contributors -->
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4fd"><meta name="description" content="Math Dojo — экспериментальная тренировка понимания задания и выбора действий для вычислений, линейных уравнений и формул сокращённого умножения."><title>Как начать? · Math Dojo</title><style>/* SPDX-License-Identifier: GPL-3.0-or-later */
+:root{--paper:#fff;--bg:#f7f4fd;--ink:#302643;--muted:#80738f;--accent:#8064cf;--accent-deep:#6849b9;--line:#e9e1f2;--good:#29745e;--bad:#9e425d}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0,#ebe2fd,transparent 38%),var(--bg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #b8a3ee;outline-offset:3px}button:disabled{cursor:default;opacity:.55}.shell{max-width:880px;margin:0 auto;padding:24px 18px 70px}.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:32px}.brand{color:#534078;text-decoration:none;font-weight:900;font-size:19px;letter-spacing:-.4px}.go-back{padding:10px 15px;border:1px solid #e5dcf0;background:white;border-radius:14px;text-decoration:none;color:#6b529f;font-size:14px;font-weight:750}.card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:35px 39px;box-shadow:0 15px 65px #4e327516}.kicker{text-transform:uppercase;color:#7a5cba;font-weight:850;letter-spacing:.12em;font-size:11px}.intro h1{font-size:clamp(29px,5vw,41px);letter-spacing:-1.4px;margin:12px 0;line-height:1.13}.lead{color:var(--muted);line-height:1.65;margin:0 0 22px;max-width:650px}.learn{background:#f8f4ff;border:1px solid #ece3fa;border-radius:18px;padding:18px 20px;margin-bottom:22px;line-height:1.6;font-size:15px}.learn strong{display:block;color:#60458f;margin-bottom:5px}.learn .sample{font-size:21px;font-weight:800;color:#39264f;display:block;margin-top:9px;letter-spacing:.1px}.button{background:var(--accent);border:0;color:#fff;font-weight:800;padding:16px 22px;min-height:51px;border-radius:15px}.button:hover{background:var(--accent-deep)}.button.alt{background:#f3edfc;color:#624c9b}.button.alt:hover{background:#ede4fa}.button.tertiary{background:transparent;color:#796899;border:1px solid var(--line)}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}.small{color:var(--muted);font-size:14px}.progress-line{display:flex;justify-content:space-between;color:#81748f;font-size:13px;font-weight:750;margin-bottom:12px;gap:12px}.track{background:#e9e1f2;height:8px;border-radius:100px;overflow:hidden;margin-bottom:18px}.fill{height:100%;width:0;background:var(--accent);transition:width .2s}.question{font-size:clamp(19px,3vw,25px);font-weight:760;line-height:1.4;margin:12px 0}.formula{font-size:clamp(28px,6vw,46px);font-weight:850;letter-spacing:-.7px;line-height:1.5;min-height:70px;word-break:break-word;margin:18px 0 23px}.formula sup,.choice sup{font-size:.65em;vertical-align:super}.input{border:2px solid #e2d8f1;border-radius:15px;background:#fdfbff;max-width:320px;width:100%;padding:13px 16px;font-size:23px;color:#38254e;font-weight:800}.input:focus{outline:0;border-color:#9a80de}.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.choice{border:2px solid #e8e0f3;background:#fff;text-align:left;border-radius:16px;min-height:66px;padding:13px 16px;color:#39294f;font-size:19px;font-weight:730}.choice:hover{border-color:#c1adf0}.choice.selected{border-color:var(--accent);background:#f7f2ff}.choice.correct{border-color:#5aad88;background:#edfaf3}.choice.wrong{border-color:#ce839b;background:#fff1f5}.feedback{padding:13px 16px;border-radius:13px;margin:17px 0 8px;line-height:1.5;font-size:15px}.feedback.good{background:#e9f7f1;color:var(--good)}.feedback.bad{background:#fff1f4;color:var(--bad)}.feedback.neutral{background:#f4effa;color:#715594}.explain{padding:14px 16px;border-left:3px solid #a68bdf;background:#faf8ff;line-height:1.65;color:#554467;margin-bottom:16px}.toolbar{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;align-items:center;margin-top:19px}.toolbar .button{flex:1 1 200px}.tool{font-size:13px;padding:12px 15px;border:1px solid var(--line);background:white;color:#75628f;border-radius:13px;font-weight:760}.tool:hover{background:#faf7fe}.tool-group{display:flex;flex-wrap:wrap;gap:8px}.summary-number{font-size:56px;font-weight:900;letter-spacing:-2px;color:#7653c3;margin:14px 0}.summary p{color:#6e637b;line-height:1.65}.reflection{margin-top:16px;border-radius:17px;background:#f7f3fd;padding:16px;line-height:1.6}.reflection strong{display:block;margin-bottom:6px}.note{margin-top:14px;color:#8a8097;font-size:13px} @media(max-width:600px){.shell{padding:15px 12px 36px}.bar{margin-bottom:20px}.card{border-radius:22px;padding:25px 19px}.choices{grid-template-columns:1fr}.choice{min-height:59px;font-size:18px}.button{width:100%}.formula{margin:12px 0 22px}.intro h1{font-size:30px}.toolbar{align-items:stretch}.tool-group{width:100%}.tool{flex:1}.brand{font-size:17px}}
+
+/* SPDX-License-Identifier: GPL-3.0-or-later
+   Additive layout rules: original Math Dojo palette remains in focused/style.css. */
+.topic-options{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0 19px}
+.topic-option{padding:12px 16px;background:white;border:1px solid var(--line);border-radius:14px;color:#624c9b;font-weight:760;text-align:left}
+.topic-option.current{background:#f3edfc;border:2px solid var(--accent);padding:11px 15px}
+.subject-detail{color:var(--muted);line-height:1.6;margin:0 0 23px}
+.help-note{border-left:3px solid #a68bdf;background:#faf8ff;padding:13px 15px;border-radius:0 10px 10px 0;line-height:1.65;color:#554467}
+.choice{line-height:1.5;font-size:16px;font-weight:680;min-height:77px;overflow-wrap:anywhere}
+.choice span{display:block}.question{font-size:clamp(19px,3vw,23px);font-weight:780}.formula{font-size:clamp(28px,5.3vw,39px);min-height:50px;margin:13px 0 22px}
+.exp-link{color:#7355b2;text-decoration:none;font-weight:730;font-size:14px;display:inline-block;margin-top:17px}
+.exp-link:hover{text-decoration:underline}
+.pilot-note{margin-top:15px;color:var(--muted);font-size:13px;line-height:1.6}
+.row.nav-row{justify-content:space-between;margin-top:18px}.phase-flag{font-size:12px;color:#745aa9;letter-spacing:.03em;font-weight:800}
+.quiz-choice-head{color:var(--muted);font-weight:670;margin-bottom:11px}
+@media(max-width:600px){.topic-option{flex:1 1 100%;}.choice{min-height:64px;font-size:15px}.row.nav-row{align-items:stretch}.exp-link{padding:8px 0}}
+</style><link rel="stylesheet" href="../assets/math.css"></head><body>
+<div class="shell"><header class="bar"><a class="brand" href="../index.html">✦ Math Dojo</a><a class="go-back" href="../index.html">← Все темы</a></header><main>
+<section class="card intro" id="intro"><div class="kicker">Экспериментальный режим · ориентировка в задаче</div><h1>Как начать?</h1><p class="lead">Тренируем не скорость решения, а момент перед ним: прочитать запись, понять задачу и выбрать обоснованное действие.</p>
+<div class="learn"><strong>Здесь мы учимся ориентироваться</strong>Выбирай шаг и разбирай, почему он работает. Если подходящих способов несколько, мы уточняем вопрос — не выдаём один допустимый путь за единственный.</div>
+<div class="phase-flag">Тема пилотной тренировки</div><div id="topic-buttons" class="topic-options" role="group" aria-label="Выбор темы"></div>
+<p class="subject-detail" id="subject-detail"></p><div class="row"><button type="button" class="button" id="start">Начать: 10 вопросов →</button></div><a class="exp-link" id="regular-link" href="arithmetic_plus.html">Обычная тренировка</a> · <a class="exp-link" id="curated-link" href="strategy_library.html">Библиотека заданий</a>
+<p class="pilot-note">Это дополнение. В обычных тренажёрах ничего не изменено: там по-прежнему можно решать задания самостоятельно, без выбора стратегии.</p></section>
+<section id="practice" class="hidden"><div class="progress-line"><span id="progress-label"></span><span id="progress-help"></span></div><div class="track"><div id="progress-fill" class="fill"></div></div>
+<div class="card"><div class="kicker" id="stage-title">Понять условие</div><h1 id="prompt" class="question"></h1><div class="formula" id="formula"></div><div class="quiz-choice-head">Выбери наиболее подходящий ответ:</div><div id="variants" class="choices" role="group" aria-label="Варианты действия"></div>
+<div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div><div id="explanation" class="explain hidden"></div><div id="hint-message" class="help-note hidden"></div>
+<div class="toolbar"><div class="tool-group"><button class="tool" id="hint" type="button">Не знаю, с чего начать</button><button class="tool hidden" id="reveal" type="button">Показать разбор</button><button class="tool" id="skip" type="button">Пропустить</button></div><button class="button" type="button" id="next">Проверить выбор</button></div><div class="row nav-row"><a class="exp-link hidden" href="arithmetic_plus.html" id="regular-after">Открыть обычную тренировку</a><button type="button" id="return-to-setup" class="tool">← К выбору темы</button></div>
+</div></section>
+<section class="card summary hidden" id="results"><div class="kicker">Серия завершена</div><h1>Что удалось сделать самостоятельно</h1><div class="summary-number" id="total-independent"></div><p id="results-lead"></p><div class="reflection" id="results-notes"></div><div class="row" style="margin-top:22px"><button class="button" type="button" id="repeat">Ещё 10 вопросов</button><button class="button alt" type="button" id="back-to-start">Выбрать тему</button></div><a class="exp-link" id="try-regular" href="arithmetic_plus.html">Перейти к обычной тренировке</a> · <a class="exp-link" id="try-curated" href="strategy_library.html">Библиотека заданий</a></section>
+</main></div>
+<script>/* SPDX-License-Identifier: GPL-3.0-or-later
+ * Math Dojo: experimental mathematical orientation module.
+ * Families deliberately restrict prompts to one well-defined interpretation.
+ */
+(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (root) root.MathDojoOrientation = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const rint = (min,max,rng=Math.random)=>min+Math.floor(rng()*(max-min+1));
+  const choose=(list,rng=Math.random)=>list[rint(0,list.length-1,rng)];
+  const shuffle=(items,rng=Math.random)=>{const a=items.slice();for(let i=a.length-1;i>0;i--){const j=rint(0,i,rng);[a[i],a[j]]=[a[j],a[i]];}return a;};
+  const num=n=>String(n).replace(/-/g,'−');
+  const sum=(a,b)=>`${num(a)} ${b<0?'−':'+'} ${Math.abs(b)}`;
+  const par=n=>n<0?`(${num(n)})`:String(n);
+  const xterm=a=>a===1?'x':a===-1?'−x':`${num(a)}x`;
+  const eqax=(a,b,c)=>`${xterm(a)} ${b<0?'−':'+'} ${Math.abs(b)} = ${num(c)}`;
+  const formatPlus=(a)=>a>=0?`+ ${a}`:`− ${-a}`;
+  const phases={read:'Понять запись',goal:'Понять условие',start:'Выбрать действие',next:'Продолжить решение',finish:'Закончить решение'};
+  const topics={
+    calculations:{title:'Базовые вычисления',intro:'Разбираемся со знаками, порядком действий и скобками — прежде чем считать.',regular:'arithmetic_plus.html'},
+    linear:{title:'Линейные уравнения',intro:'Учимся видеть неизвестное, цель преобразования и границы готового решения.',regular:'linear_equations.html'},
+    identities:{title:'Формулы сокращённого умножения',intro:'Определяем структуру произведений и квадратов скобок, не угадывая формулы.',regular:'formulas.html'}
+  };
+  function task(topic,family,phase,math,question,options,correct,explain,hint,meta={}) {
+    if(options.length!==4||new Set(options.map(x=>x.label)).size!==4)throw Error('Варианты не уникальны: '+family);
+    if(!options.some(o=>o.id===correct))throw Error('Нет правильного ответа: '+family);
+    if(options.filter(o=>o.id===correct).length!==1)throw Error('Неоднозначный ключ: '+family);
+    for(const o of options)if(!o.feedback||!o.label)throw Error('Нет пояснения к варианту: '+family);
+    return {topic,family,phase,math,question,options,correct,explain,hint,meta};
+  }
+  const options=(correct,wrong1,wrong2,wrong3)=>[
+    {id:'a',label:correct[0],feedback:correct[1]},
+    {id:'b',label:wrong1[0],feedback:wrong1[1]},
+    {id:'c',label:wrong2[0],feedback:wrong2[1]},
+    {id:'d',label:wrong3[0],feedback:wrong3[1]}
+  ];
+  // Calculations: intentionally no fractional, percentage, power, or radical exercises.
+  const calculations=[
+    (rng)=>{const a=rint(8,24,rng),b=rint(2,9,rng),c=rint(2,7,rng),result=a-b*c;
+      return task('calculations','priority-product','start',`${a} − ${b} · ${c}`,'Какую часть выражения нужно вычислить до вычитания?', options(
+        [`${b} · ${c}`, 'Умножение выполняют раньше вычитания.'],
+        [`${a} − ${b}`, 'Вычитание сейчас не первое: справа ещё есть умножение.'],
+        [`${a} − ${c}`, 'Эти числа не соединены знаком действия в исходной записи.'],
+        [`${b} + ${c}`, 'В исходном выражении между этими числами стоит умножение, не сложение.']), 'a',
+        `Сначала ${b} · ${c} = ${b*c}, затем ${a} − ${b*c} = ${num(result)}.`, 'Найди операции с разным приоритетом.',{result});},
+    (rng)=>{const a=rint(5,19,rng),b=rint(2,9,rng),c=rint(2,7,rng);const intermediate=a+b;
+      return task('calculations','parentheses','start',`(${a} + ${b}) · ${c}`,'Что нужно вычислить первым, чтобы сохранить порядок действий?', options(
+        [`${a} + ${b}`, 'Скобки задают первый шаг.'],
+        [`${b} · ${c}`, 'Здесь умножение идёт после вычисления скобок.'],
+        [`${a} · ${c}`, 'Нельзя умножить только первую часть скобок и считать работу законченной.'],
+        [`${a} + ${c}`, 'Эти числа не стоят в одной операции.']), 'a',
+        `Сначала ${a} + ${b} = ${intermediate}; затем ${intermediate} · ${c} = ${intermediate*c}.`, 'Посмотри, какая часть записи заключена в скобки.',{result:intermediate*c});},
+    (rng)=>{const a=rint(4,18,rng),b=rint(2,12,rng);const expr=`${a} − (${num(-b)})`;
+      return task('calculations','minus-negative','read',expr,'Как правильно понять два минуса в этой записи?',options(
+        ['Вычитаем отрицательное число — значение увеличивается.', 'Вычитание отрицательного числа равносильно прибавлению положительного.'],
+        ['Вычитаем положительное число — значение уменьшается.', 'Число в скобках отрицательное, а не положительное.'],
+        ['Умножаем два отрицательных числа.', 'Между числами стоит вычитание, не умножение.'],
+        ['Нужно сначала поменять знак первого числа.', 'Минусы относятся к операции вычитания и ко второму числу.']), 'a',
+        `${expr} = ${a} + ${b} = ${a+b}.`, 'Отдели знак операции от знака числа в скобках.',{result:a+b});},
+    (rng)=>{const a=rint(5,15,rng),b=rint(2,7,rng),c=rint(2,8,rng),v=a-b;
+      return task('calculations','continue-from-parentheses','next',`(${a} − ${b}) · ${c} = ${v} · ${c}`,'Скобки уже посчитали. Как продолжить?',options(
+        [`Умножить ${num(v)} на ${c}.`, 'Теперь остаётся одно умножение.'],
+        [`Прибавить ${c} к ${num(v)}.`, 'Между оставшимися числами стоит знак умножения.'],
+        [`Разделить ${num(v)} на ${c}.`, 'В записи нет деления.'],
+        [`Вычесть ${c} из ${num(v)}.`, 'Вычитание внутри скобок уже выполнено.']), 'a',
+        `${v} · ${c} = ${v*c}. Завершение — одно вычисленное число.`, 'Обрати внимание на знак между числами во второй записи.',{result:v*c});},
+    (rng)=>{const a=rint(5,16,rng),b=rint(2,9,rng),c=rint(2,7,rng),intermediate=a+b;
+      return task('calculations','unfinished','finish',`${a} + ${b} · ${c} = ${a} + ${b*c}`,'Можно ли считать, что задание «вычисли значение» уже выполнено?', options(
+        ['Нет: нужно выполнить оставшееся сложение и записать число.', 'Подстановка произведения была промежуточным шагом, а итоговое значение ещё не получено.'],
+        ['Да: умножение выполнено, остальное можно оставить.', 'Задание просит значение всего выражения, а не части.'],
+        ['Нет: сначала надо вычислить сложение из исходной записи.', 'По приоритету умножение уже посчитано верно.'],
+        ['Да: достаточно записать тот же пример без скобок.', 'Окончательный ответ должен быть числом, а не незавершённым выражением.']), 'a',
+        `Остаётся ${a} + ${b*c} = ${a+b*c}. Ответ записываем числом.`, 'Сопоставь написанное с требованием «вычисли значение».',{result:a+b*c});}
+  ];
+  // Linear equations: positive coefficients and integer solutions; no division by x.
+  const linear=[
+    (rng)=>{const a=rint(2,8,rng),x=rint(1,9,rng),b=rint(2,11,rng),c=a*x+b;
+      return task('linear','remove-constant','start',eqax(a,b,c),'Нужно оставить слагаемое с x слева. Какое действие сделать с обеими частями?',options(
+        [`Вычесть ${b} из обеих частей.`, 'Это убирает свободное слагаемое слева, сохраняя равенство.'],
+        [`Прибавить ${b} к обеим частям.`, 'Свободное слагаемое слева станет больше, а не исчезнет.'],
+        [`Разделить только левую часть на ${a}.`, 'Действие только с одной стороной нарушает равенство.'],
+        [`Вычесть ${a} из обеих частей.`, 'Коэффициент при x не является свободным слагаемым.']), 'a',
+        `${xterm(a)} = ${c-b}, затем x = ${x}.`, 'Посмотри на число без x слева.',{solution:x,a,b,c});},
+    (rng)=>{const a=rint(2,7,rng),k=rint(2,7,rng),x=rint(1,8,rng),c=a*(x+k);
+      return task('linear','divide-bracket','start',`${a}(x + ${k}) = ${c}`,'Как удобнее убрать множитель перед всей скобкой?',options(
+        [`Разделить обе части на ${a}.`, 'Множитель относится ко всей скобке; деление обеих частей сохраняет равенство.'],
+        [`Вычесть ${a} из обеих частей.`, 'Перед скобкой стоит множитель, а не прибавленное число.'],
+        [`Разделить только x на ${a}.`, 'Двойка скобок связана с коэффициентом целиком, не только с x.'],
+        [`Прибавить ${k} к обеим частям.`, 'Число внутри скобки не поможет убрать внешний множитель.']), 'a',
+        `Получаем x + ${k} = ${x+k}; потом x = ${x}. Раскрытие скобок тоже возможно, но здесь деление короче.`, 'Как связаны число перед скобкой и всё её содержимое?',{solution:x});},
+    (rng)=>{const a=rint(5,9,rng),c=rint(1,a-2,rng),x=rint(1,7,rng),d=rint(3,11,rng),b=d-(a-c)*x;
+      return task('linear','collect-variable','goal',`${xterm(a)} ${formatPlus(b)} = ${xterm(c)} + ${d}`,'Какая цель первого преобразования, если мы хотим найти x?',options(
+        ['Собрать все слагаемые с x на одной стороне равенства.', 'Так получается обычное линейное уравнение с одним слагаемым x.'],
+        ['Возвести обе части равенства в квадрат.', 'Здесь нет квадратов, и такое действие усложняет задачу.'],
+        ['Заменить все x на ноль, не проверяя условие.', 'Подстановка нуля не находит все решения неизвестного x.'],
+        ['Убрать знак равенства и просто сложить числа.', 'Так теряется смысл уравнения.']), 'a',
+        `Можно вычесть ${xterm(c)} из обеих частей: ${xterm(a-c)} ${formatPlus(b)} = ${d}. Затем x = ${x}.`, 'Здесь неизвестное стоит по обе стороны равенства.',{solution:x,a,b,c,d});},
+    (rng)=>{const a=rint(2,8,rng),x=rint(2,9,rng),b=a*x;
+      return task('linear','final-division','next',`${xterm(a)} = ${b}`,'Что нужно сделать, чтобы получить x?',options(
+        [`Разделить обе части на ${a}.`, 'Деление на ненулевой коэффициент даёт значение x.'],
+        [`Вычесть ${a} из обеих частей.`, 'Перед x стоит множитель, не слагаемое.'],
+        [`Разделить обе части на x.`, 'Неизвестное может оказаться нулём; к тому же мы хотим найти его, а не сократить.'],
+        [`Прибавить ${a} к обеим частям.`, 'Это не убирает коэффициент при x.']), 'a',
+        `После деления: x = ${b} : ${a} = ${x}.`, 'Чем связаны коэффициент и неизвестное?',{solution:x,a,b});},
+    (rng)=>{const a=rint(2,6,rng),x=rint(1,8,rng),b=rint(2,12,rng),c=a*x+b;
+      return task('linear','finish-with-answer','finish',`${eqax(a,b,c)}  →  x = ${x}`,'Получено значение x. Что проверяет, что решение завершено корректно?',options(
+        ['Подставить найденный x в исходное равенство и сравнить обе стороны.', 'Подстановка проверяет, что найденное значение действительно решает исходное уравнение.'],
+        ['Подставить x только в левую часть и не смотреть на правую.', 'Нужно сравнить обе стороны уравнения.'],
+        ['Умножить значение x на −1 и заменить ответ.', 'Знак решения нельзя менять без оснований.'],
+        ['Сразу записать второе значение x с противоположным знаком.', 'Линейное уравнение с ненулевым коэффициентом имеет ровно одно решение.']), 'a',
+        `Проверка: ${a} · ${x} + ${b} = ${c}; правая часть тоже ${c}. Значение x = ${x} подходит.`, 'Вспомни, что означает знак равенства.',{solution:x,a,b,c});}
+  ];
+  // Identities: formulas with squared binomials and difference of squares only.
+  const identities=[
+    (rng)=>{const n=rint(2,9,rng);
+      return task('identities','meaning-of-square','read',`(x + ${n})²`,'Как правильно прочитать квадрат всей скобки?',options(
+        [`(x + ${n})(x + ${n})`, 'Квадрат выражения — произведение выражения на само себя.'],
+        [`x² + ${n*n}`, 'Так исчезают два смешанных произведения при раскрытии скобок.'],
+        [`x² + ${n}`, 'Здесь возводится в квадрат не только x.'],
+        [`2(x + ${n})`, 'Квадрат не означает умножение выражения на два.']), 'a',
+        `(x + ${n})² = x² + ${2*n}x + ${n*n}. Средний член получается дважды.`, 'Что означает квадрат любого выражения в скобках?',{n});},
+    (rng)=>{const n=rint(2,9,rng);
+      return task('identities','minus-square','start',`(x − ${n})²`,'Какой способ начать раскрытие не теряет слагаемых?',options(
+        [`Переписать как (x − ${n})(x − ${n}) и умножить каждый член на каждый.`, 'Это определение квадрата скобки и корректный путь к раскрытию.'],
+        [`Сразу получить x² − ${n*n}, убрав средний член.`, 'При умножении двух скобок возникают смешанные произведения.'],
+        [`Переписать как x² + ${n*n}, отбросив оба минуса.`, 'Так смешанные произведения тоже исчезают, хотя они есть.'],
+        [`Умножить только x на −${n}.`, 'Необходимо учитывать каждый член обеих скобок.']), 'a',
+        `(x − ${n})² = x² − ${2*n}x + ${n*n}.`, 'Представь две одинаковые скобки, а не готовую формулу.',{n});},
+    (rng)=>{const n=rint(3,9,rng),m=2*n;
+      return task('identities','recognize-square','goal',`x² + ${m}x + ${n*n}`,'Какую структуру удобно распознать в этом трёхчлене?',options(
+        [`Квадрат суммы (x + ${n})².`, `Средний член ${m}x — удвоенное произведение x и ${n}; свободный — ${n}².`],
+        [`Квадрат разности (x − ${n})².`, 'При квадрате разности средний член был бы отрицательным.'],
+        [`Разность квадратов (x − ${n})(x + ${n}).`, 'В разности квадратов нет линейного среднего члена.'],
+        [`Квадрат суммы (x + ${m})².`, 'В этом случае средний член был бы вдвое больше и свободный член другой.']), 'a',
+        `Проверка: (x + ${n})² = x² + ${m}x + ${n*n}.`, 'Сравни средний член и квадрат числа без x.',{n});},
+    (rng)=>{const n=rint(2,8,rng);
+      return task('identities','opposite-binomial','next',`(x − ${n})(x + ${n})`,'Что случится со смешанными слагаемыми после раскрытия скобок?',options(
+        ['Они взаимно уничтожатся: останется разность квадратов.', 'Произведения +nx и −nx равны по модулю и противоположны по знаку.'],
+        ['Оба станут положительными и дадут удвоенное произведение.', 'Слагаемые имеют разные знаки, поэтому не складываются в удвоенный член.'],
+        ['Оба станут отрицательными и дадут отрицательный средний член.', 'Один из смешанных членов положительный.'],
+        ['Останется только квадрат суммы.', 'Это произведение разных скобок, а не квадрат одной.']), 'a',
+        `(x − ${n})(x + ${n}) = x² − ${n*n}.`, 'Посмотри на знаки произведений x·n и (−n)·x.',{n});},
+    (rng)=>{const k=rint(2,4,rng),n=rint(2,7,rng);
+      return task('identities','multiply-after-expansion','finish',`${k}(x + ${n})² = ${k}(x² + ${2*n}x + ${n*n})`,'Что осталось сделать, чтобы полностью раскрыть скобки?',options(
+        [`Умножить каждый член внутри скобок на ${k}.`, 'Распределительный закон относится ко всем трём слагаемым.'],
+        [`Умножить на ${k} только x².`, 'Множитель перед скобками действует и на остальные члены.'],
+        [`Умножить на ${k} только число ${n*n}.`, 'Остальные слагаемые тоже находятся внутри внешних скобок.'],
+        [`Заменить множитель ${k} на квадрат ${k*k}.`, 'Коэффициент находится вне квадрата и сам в квадрат не возводится.']), 'a',
+        `Получаем ${k}x² + ${k*2*n}x + ${k*n*n}.`, 'На какую часть выражения действует множитель перед скобками?',{k,n});}
+  ];
+  const families={calculations,linear,identities};
+  function create(topic, familyIndex, rng=Math.random){if(!families[topic])throw Error('Тема не поддерживается');const list=families[topic];const maker=list[((familyIndex%list.length)+list.length)%list.length];for(let attempt=0;attempt<50;attempt++){try{const raw=maker(rng);raw.options=shuffle(raw.options,rng);return raw;}catch(err){if(!String(err.message).startsWith('Варианты не уникальны'))throw err;}}throw Error('Не удалось сгенерировать четыре различимых варианта');}
+  function session(topic,count=10,rng=Math.random){if(!topics[topic])throw Error('Неизвестная тема');if(count<1||count>60)throw Error('Недопустимый размер серии');const seeds=shuffle([0,1,2,3,4],rng);return Array.from({length:count},(_,i)=>create(topic,seeds[i%5],rng));}
+  return {topics,phases,create,session,task,options};
+});
+</script>
+<script>/* SPDX-License-Identifier: GPL-3.0-or-later — interface for orientation pilot */
+(()=>{
+'use strict';
+const lib=window.MathDojoOrientation;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const math=s=>(typeof window!=='undefined'&&window.MathDojoMath)?window.MathDojoMath.textHTML(s):esc(s).replace(/²/g,'<sup>2</sup>');
+const params=new URLSearchParams(location.search);
+let topic=lib.topics[params.get('topic')]?params.get('topic'):'calculations';
+let questions=[],position=0,selected=null,solved=false,attempts=0,helped=false,first=0,needs=[],phaseStats={};
+function view(name){for(const id of ['intro','practice','results'])$(id).classList.toggle('hidden',id!==name);}
+function curatedLink(){ $('curated-link').href='strategy_library.html?topic='+encodeURIComponent(topic); $('try-curated').href='strategy_library.html?topic='+encodeURIComponent(topic); }
+function modeButtons(){const root=$('topic-buttons');root.replaceChildren();for(const [id,t] of Object.entries(lib.topics)){const b=document.createElement('button');b.type='button';b.className='topic-option'+(id===topic?' current':'');b.textContent=t.title;b.setAttribute('aria-pressed',String(id===topic));b.addEventListener('click',()=>{topic=id;modeButtons();$('subject-detail').textContent=lib.topics[topic].intro;$('regular-link').href=lib.topics[topic].regular;$('regular-link').textContent='Обычная тренировка: '+lib.topics[topic].title;curatedLink();});root.append(b);}}
+function firstScreen(){modeButtons();curatedLink();$('subject-detail').textContent=lib.topics[topic].intro;$('regular-link').href=lib.topics[topic].regular;$('regular-link').textContent='Обычная тренировка: '+lib.topics[topic].title;view('intro');}
+function start(){questions=lib.session(topic,10);position=0;first=0;needs=[];phaseStats={};view('practice');render();}
+function notice(message,kind){$('feedback').className='feedback '+kind;$('feedback').textContent=message;}
+function render(){const q=questions[position];attempts=0;helped=false;solved=false;selected=null;
+ $('progress-label').textContent=`Вопрос ${position+1} из ${questions.length}`;$('progress-help').textContent=lib.phases[q.phase];$('progress-fill').style.width=`${position/questions.length*100}%`;
+ $('stage-title').textContent=lib.phases[q.phase];if(window.MathDojoMath){window.MathDojoMath.render($('prompt'),q.question,q.questionLatex);window.MathDojoMath.render($('formula'),q.math,q.mathLatex);}else{$('prompt').textContent=q.question;$('formula').innerHTML=math(q.math);}
+ const list=$('variants');list.replaceChildren();for(const opt of q.options){const b=document.createElement('button');b.type='button';b.className='choice';b.setAttribute('aria-pressed','false');b.dataset.id=opt.id;
+ const label=document.createElement('span');if(window.MathDojoMath)window.MathDojoMath.render(label,opt.label,opt.latex);else label.innerHTML=math(opt.label);b.append(label);
+ b.addEventListener('click',()=>{if(solved)return;selected=opt.id;[...list.children].forEach(el=>{el.classList.remove('wrong');const chosen=el===b;el.classList.toggle('selected',chosen);el.setAttribute('aria-pressed',String(chosen));});});list.append(b);}
+ $('feedback').className='feedback hidden';$('feedback').textContent='';$('explanation').classList.add('hidden');$('explanation').textContent='';$('hint-message').classList.add('hidden');$('reveal').classList.add('hidden');$('hint').disabled=false;$('skip').classList.remove('hidden');$('next').textContent='Проверить выбор';$('regular-after').classList.add('hidden');$('regular-after').href=lib.topics[topic].regular;
+ }
+function complete(ok){if(solved)return;const q=questions[position];solved=true;if(ok&&attempts===1&&!helped)first++;else needs.push({q:q.math,phase:q.phase});
+ if(!phaseStats[q.phase])phaseStats[q.phase]={total:0,independent:0};phaseStats[q.phase].total++;if(ok&&attempts===1&&!helped)phaseStats[q.phase].independent++;
+ for(const child of $('variants').children){child.disabled=true;if(child.dataset.id===q.correct)child.classList.add('correct');}
+ if(window.MathDojoMath)window.MathDojoMath.render($('explanation'),q.explain,q.explainLatex);else $('explanation').textContent=q.explain;$('explanation').classList.remove('hidden');$('hint').disabled=true;$('reveal').classList.add('hidden');$('skip').classList.add('hidden');$('next').textContent=position===questions.length-1?'К результатам':'Следующий вопрос';$('regular-after').classList.remove('hidden');
+ if(!ok)notice('Открой разбор и сравни его со своим ходом мысли.','neutral');}
+function check(){if(solved){position++;if(position>=questions.length)end();else render();return;}
+ if(selected===null){notice('Сначала выбери один из вариантов. Можно воспользоваться подсказкой.','neutral');return;}
+ const q=questions[position];attempts++;const picked=q.options.find(o=>o.id===selected);
+ if(picked.id===q.correct){notice('Подходит. Теперь посмотри, почему именно это действие оправдано.','good');complete(true);return;}
+ notice(picked.feedback,'bad');// feedback is specific to the selected misconception; the learner may retry
+ $('reveal').classList.remove('hidden');
+ [...$('variants').children].forEach(el=>el.classList.toggle('wrong',el.dataset.id===selected));
+}
+function reveal(){if(solved)return;complete(false);}
+function hint(){if(solved)return;helped=true;if(window.MathDojoMath)window.MathDojoMath.render($('hint-message'),questions[position].hint,questions[position].hintLatex);else $('hint-message').textContent=questions[position].hint;$('hint-message').classList.remove('hidden');}
+function end(){view('results');$('progress-fill').style.width='100%';$('total-independent').textContent=`${first} из ${questions.length}`;
+ const phases=Object.entries(phaseStats).map(([key,v])=>({key,title:lib.phases[key],...v}));
+ const priorities=phases.filter(v=>v.independent<v.total).sort((a,b)=> (a.independent/a.total)-(b.independent/b.total));
+ $('results-lead').textContent='Это пробный режим ориентировки в задачах. Здесь важно не число баллов, а то, в какой момент понадобилась помощь.';
+ $('results-notes').replaceChildren();if(priorities.length===0){const p=document.createElement('p');p.textContent='Все вопросы решены самостоятельно с первой попытки. Попробуй теперь обычные задания без вариантов действий.';$('results-notes').append(p);}else{
+ const title=document.createElement('strong');title.textContent='Что полезно потренировать';$('results-notes').append(title);
+ for(const item of priorities){const p=document.createElement('p');p.textContent=`${item.title}: самостоятельно ${item.independent} из ${item.total}.`;$('results-notes').append(p);}}
+ $('try-regular').href=lib.topics[topic].regular;
+}
+$('start').addEventListener('click',start);$('next').addEventListener('click',check);$('hint').addEventListener('click',hint);$('reveal').addEventListener('click',reveal);$('skip').addEventListener('click',reveal);$('repeat').addEventListener('click',start);$('back-to-start').addEventListener('click',firstScreen);
+$('return-to-setup').addEventListener('click',firstScreen);
+document.addEventListener('keydown',e=>{if($('practice').classList.contains('hidden')||solved||e.altKey||e.ctrlKey||e.metaKey)return;if(['1','2','3','4'].includes(e.key)){const b=$('variants').children[Number(e.key)-1];if(b)b.click();}else if(e.key==='Enter')check();});
+firstScreen();
+})();
+</script>
+</body></html>

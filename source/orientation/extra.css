@@ -1,0 +1,15 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later
+   Additive layout rules: original Math Dojo palette remains in focused/style.css. */
+.topic-options{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0 19px}
+.topic-option{padding:12px 16px;background:white;border:1px solid var(--line);border-radius:14px;color:#624c9b;font-weight:760;text-align:left}
+.topic-option.current{background:#f3edfc;border:2px solid var(--accent);padding:11px 15px}
+.subject-detail{color:var(--muted);line-height:1.6;margin:0 0 23px}
+.help-note{border-left:3px solid #a68bdf;background:#faf8ff;padding:13px 15px;border-radius:0 10px 10px 0;line-height:1.65;color:#554467}
+.choice{line-height:1.5;font-size:16px;font-weight:680;min-height:77px;overflow-wrap:anywhere}
+.choice span{display:block}.question{font-size:clamp(19px,3vw,23px);font-weight:780}.formula{font-size:clamp(28px,5.3vw,39px);min-height:50px;margin:13px 0 22px}
+.exp-link{color:#7355b2;text-decoration:none;font-weight:730;font-size:14px;display:inline-block;margin-top:17px}
+.exp-link:hover{text-decoration:underline}
+.pilot-note{margin-top:15px;color:var(--muted);font-size:13px;line-height:1.6}
+.row.nav-row{justify-content:space-between;margin-top:18px}.phase-flag{font-size:12px;color:#745aa9;letter-spacing:.03em;font-weight:800}
+.quiz-choice-head{color:var(--muted);font-weight:670;margin-bottom:11px}
+@media(max-width:600px){.topic-option{flex:1 1 100%;}.choice{min-height:64px;font-size:15px}.row.nav-row{align-items:stretch}.exp-link{padding:8px 0}}

@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4fd">
 <meta name="description" content="Локальный тренажёр арифметики с короткими сериями заданий, подсказками и разбором решений."><title>Math Dojo · Арифметика</title>
 <style>
@@ -45,8 +46,8 @@ body{background:radial-gradient(ellipse at 3% 3%,#e7ddfc 0,transparent 40%),radi
   <p class="hero-copy">Короткие серии заданий для спокойной отработки вычислений. Где-то нужно вписать ответ, где-то — выбрать один вариант. После ошибки можно взять подсказку и дойти до правильного решения с пониманием.</p>
   <div class="setting-label">Что тренируем?</div><div id="category-options" class="category-options" role="group" aria-label="Тема тренировки"></div>
   <div class="setting-label">Сложность</div><div class="segmented" role="group" aria-label="Сложность"><button type="button" data-level="1">База</button><button type="button" data-level="2">Уверенно</button><button type="button" data-level="3">Посложнее</button></div>
-  <div class="setting-label">Длина тренировки</div><div class="segmented" role="group" aria-label="Число заданий"><button type="button" data-length="8">8 заданий</button><button type="button" data-length="12">12 заданий</button><button type="button" data-length="20">20 заданий</button></div>
-  <div class="setup-footer"><button id="start" type="button" class="primary">Начать тренировку →</button><p class="fineprint">Выбери тему, сложность и длину серии. Начать можно с короткой базы, а потом переходить к более уверенным вычислениям.</p></div>
+  <div class="setting-label">Длина тренировки</div><div class="segmented" role="group" aria-label="Число заданий"><button type="button" data-length="6">6 заданий</button><button type="button" data-length="8">8 заданий</button><button type="button" data-length="12">12 заданий</button><button type="button" data-length="20">20 заданий</button></div>
+  <div class="setup-footer"><button id="start" type="button" class="primary">Начать тренировку →</button><p class="fineprint">Выбери тему, сложность и длину серии. Начать можно с короткой базы, а потом переходить к более уверенным вычислениям.</p></div><a class="hub-nav" style="margin-top:16px" href="how_to_start.html?topic=calculations">Попробовать «Как начать?» · эксперимент</a>
 </section>
 <section id="play-screen" class="hidden">
  <div class="lesson-top"><span class="pill">АРИФМЕТИКА · ПРАКТИКА</span><button type="button" class="quiet-btn" id="back-setup">← К настройкам</button></div>
@@ -54,7 +55,7 @@ body{background:radial-gradient(ellipse at 3% 3%,#e7ddfc 0,transparent 40%),radi
  <section class="card task-card"><div class="task-meta"><span class="task-category" id="task-category"></span><span class="task-mode" id="task-mode"></span></div>
  <h1 class="task-title">Вычисли значение</h1><div class="task-math" id="task-math"></div>
  <div class="step-heading" id="step-heading"></div>
- <div id="answer-input-area"><label for="answer-input" class="answer-label">Твой ответ</label><input class="answer-input" id="answer-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Например, 12 или 1/2" aria-label="Введи свой ответ"></div>
+ <div id="answer-input-area"><label for="answer-input" class="answer-label">Твой ответ</label><input class="answer-input" id="answer-input" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="Например, 12 или 1/2" aria-label="Введи свой ответ"></div>
  <div id="answer-choice-area" class="answer-choice-area hidden" role="group" aria-label="Варианты ответов"></div>
  <div id="hint-box" class="notice hidden" role="status" aria-live="polite"></div><div id="feedback-box" class="notice hidden" role="status" aria-live="polite"></div><div id="explanation" class="explanation hidden"></div>
  <div class="actions"><button type="button" class="primary" id="submit">Проверить</button></div></section>
@@ -65,15 +66,15 @@ body{background:radial-gradient(ellipse at 3% 3%,#e7ddfc 0,transparent 40%),radi
 <script>
 /* НАСТРОЙКА ДЛЯ ПРЕПОДАВАТЕЛЯ (необязательно):
 studentName — подпись в шапке; defaultLevel — 1, 2 или 3;
-sessionLength — 8, 12 или 20; seed: null — новый набор каждый раз.
+sessionLength — 1–100; seed: null — новый набор каждый раз.
 */
-window.MATH_DOJO_ARITHMETIC_CONFIG = {studentName:'', defaultLevel:1, sessionLength:12, seed:null};
+window.MATH_DOJO_ARITHMETIC_CONFIG = {studentName:'', defaultLevel:1, sessionLength:6, seed:null};
 </script>
 <script>
 /* Math Dojo · Арифметика. Самостоятельный локальный тренажёр. */
 (()=>{
 'use strict';
-const CONFIG = Object.assign({studentName:'',defaultLevel:1,sessionLength:12,seed:null},window.MATH_DOJO_ARITHMETIC_CONFIG||{});
+const CONFIG = Object.assign({studentName:'',defaultLevel:1,sessionLength:6,seed:null},window.MATH_DOJO_ARITHMETIC_CONFIG||{});
 let seed = CONFIG.seed === null ? null : (Number(CONFIG.seed)>>>0);
 const random = ()=>{if(seed===null)return Math.random();let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
 const ri=(a,b)=>a+Math.floor(random()*(b-a+1));
@@ -86,7 +87,8 @@ const fmt=n=>String(tidy(n)).replace('.',',').replace('-', '−');
 const catTitles={mixed:'Всё понемногу',basic:'Сложение и вычитание',multiply:'Умножение и деление',signed:'Отрицательные числа',order:'Порядок действий',decimal:'Десятичные числа',fraction:'Простые дроби',power:'Степени и скобки'};
 const catIcons={mixed:'✦',basic:'＋',multiply:'×',signed:'±',order:'( )',decimal:'0,5',fraction:'½',power:'x²'};
 const categoryOrder=['mixed','basic','multiply','signed','order','decimal','fraction','power'];
-const state={category:'mixed',level:Math.max(1,Math.min(3,Number(CONFIG.defaultLevel)||1)),length:[8,12,20].includes(Number(CONFIG.sessionLength))?Number(CONFIG.sessionLength):12,questions:[],index:0,score:0,streak:0,maxStreak:0,attempts:0,finished:false,selected:null,done:false,missed:[],lastWrong:false,hintSeen:false};
+const qp=new URLSearchParams(location.search);if(qp.has('count')){const value=Number(qp.get('count'));if(Number.isInteger(value)&&value>=1&&value<=100)CONFIG.sessionLength=value;}if(qp.has('level')){const lv=Number(qp.get('level'));if([1,2,3].includes(lv))CONFIG.defaultLevel=lv;}
+const state={category:'mixed',level:Math.max(1,Math.min(3,Number(CONFIG.defaultLevel)||1)),length:Number.isInteger(Number(CONFIG.sessionLength))&&Number(CONFIG.sessionLength)>=1&&Number(CONFIG.sessionLength)<=100?Number(CONFIG.sessionLength):6,questions:[],index:0,score:0,streak:0,maxStreak:0,attempts:0,finished:false,selected:null,done:false,missed:[],lastWrong:false,hintSeen:false};
 const signed=(n)=>n<0?`− ${fmt(-n)}`:`+ ${fmt(n)}`;
 const asTask=(category,math,value,hint,explain,extra={})=>({category,math,value:tidy(value),hint,explain, ...extra});
 
@@ -276,6 +278,7 @@ function init(){
  if(e.key==='Enter'){e.preventDefault();check();}});
 }
 init();
+if(qp.get('autostart')==='1')start();
 })();
 
 </script></body></html>

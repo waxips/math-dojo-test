@@ -1,0 +1,20 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later — Copyright (C) 2026 Math Dojo contributors -->
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4fd"><meta name="description" content="Math Dojo — экспериментальная тренировка понимания задания и выбора действий для вычислений, линейных уравнений и формул сокращённого умножения."><title>Как начать? · Math Dojo</title><style>{{STYLE}}
+{{EXTRA_STYLE}}</style></head><body>
+<div class="shell"><header class="bar"><a class="brand" href="../index.html">✦ Math Dojo</a><a class="go-back" href="../index.html">← Все темы</a></header><main>
+<section class="card intro" id="intro"><div class="kicker">Экспериментальный режим · ориентировка в задаче</div><h1>Как начать?</h1><p class="lead">Тренируем не скорость решения, а момент перед ним: прочитать запись, понять задачу и выбрать обоснованное действие.</p>
+<div class="learn"><strong>Здесь мы учимся ориентироваться</strong>Выбирай шаг и разбирай, почему он работает. Если подходящих способов несколько, мы уточняем вопрос — не выдаём один допустимый путь за единственный.</div>
+<div class="phase-flag">Тема пилотной тренировки</div><div id="topic-buttons" class="topic-options" role="group" aria-label="Выбор темы"></div>
+<p class="subject-detail" id="subject-detail"></p><div class="row"><button type="button" class="button" id="start">Начать: 10 вопросов →</button></div><a class="exp-link" id="regular-link" href="arithmetic_plus.html">Обычная тренировка</a> · <a class="exp-link" id="curated-link" href="strategy_library.html">Библиотека заданий</a>
+<p class="pilot-note">Это дополнение. В обычных тренажёрах ничего не изменено: там по-прежнему можно решать задания самостоятельно, без выбора стратегии.</p></section>
+<section id="practice" class="hidden"><div class="progress-line"><span id="progress-label"></span><span id="progress-help"></span></div><div class="track"><div id="progress-fill" class="fill"></div></div>
+<div class="card"><div class="kicker" id="stage-title">Понять условие</div><h1 id="prompt" class="question"></h1><div class="formula" id="formula"></div><div class="quiz-choice-head">Выбери наиболее подходящий ответ:</div><div id="variants" class="choices" role="group" aria-label="Варианты действия"></div>
+<div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div><div id="explanation" class="explain hidden"></div><div id="hint-message" class="help-note hidden"></div>
+<div class="toolbar"><div class="tool-group"><button class="tool" id="hint" type="button">Не знаю, с чего начать</button><button class="tool hidden" id="reveal" type="button">Показать разбор</button><button class="tool" id="skip" type="button">Пропустить</button></div><button class="button" type="button" id="next">Проверить выбор</button></div><div class="row nav-row"><a class="exp-link hidden" href="arithmetic_plus.html" id="regular-after">Открыть обычную тренировку</a><button type="button" id="return-to-setup" class="tool">← К выбору темы</button></div>
+</div></section>
+<section class="card summary hidden" id="results"><div class="kicker">Серия завершена</div><h1>Что удалось сделать самостоятельно</h1><div class="summary-number" id="total-independent"></div><p id="results-lead"></p><div class="reflection" id="results-notes"></div><div class="row" style="margin-top:22px"><button class="button" type="button" id="repeat">Ещё 10 вопросов</button><button class="button alt" type="button" id="back-to-start">Выбрать тему</button></div><a class="exp-link" id="try-regular" href="arithmetic_plus.html">Перейти к обычной тренировке</a> · <a class="exp-link" id="try-curated" href="strategy_library.html">Библиотека заданий</a></section>
+</main></div>
+<script>{{ENGINE}}</script>
+<script>{{APP}}</script>
+</body></html>

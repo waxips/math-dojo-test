@@ -1,10 +1,11 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 from pathlib import Path
 from html import escape
 base=Path(__file__).resolve().parents[2]
 assets=Path(__file__).resolve().parent
 css=(assets/'style.css').read_text(encoding='utf-8')
 js=(assets/'app.js').read_text(encoding='utf-8')
-topics=['arithmetic','fractions','percentages','powers','linear_equations','quadratic_equations','linear_functions','quadratic_functions','geometry']
+topics=['arithmetic','fractions','percentages','powers','linear_equations','quadratic_equations','linear_functions','quadratic_functions','geometry','mixed']
 for topic in topics:
     # Easy per-student customization: edit this block in the generated HTML.
     config=f'''<script>
@@ -17,7 +18,7 @@ window.MATH_DOJO_CONFIG = {{
   topic: "{topic}",
   locale: "ru",
   studentName: "",
-  sessionLength: 10,
+  sessionLength: 6,
   seed: null
 }};
 </script>'''
@@ -30,5 +31,8 @@ window.MATH_DOJO_CONFIG = {{
 <div class="bottom"><button type="button" class="small-btn" id="hint"></button><div class="bottom-right"><button type="button" class="small-btn hidden" id="reveal"></button><button type="button" class="small-btn" id="skip"></button></div></div></main></div>
 <div id="topic-overlay" class="topic-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="topics-heading"><div class="topic-dialog"><div class="dialog-head"><h2 id="topics-heading"></h2><button class="close-btn" id="close-topics" aria-label="Close" type="button">×</button></div><div id="topic-list" class="topic-grid"></div></div></div>
 {config}<script>{js}</script></body></html>'''
-    (base/'trainers'/f'{topic}.html').write_text(page.replace('</style></head>', '.hub-nav{display:inline-flex;align-items:center;padding:9px 13px;border:1px solid #e8e0f2;background:white;color:#624b94;border-radius:12px;text-decoration:none;font-weight:800;font-size:13px;margin-left:auto}\n</style></head>').replace('<div class="head-actions">','<a class="hub-nav" href="../index.html">← Каталог</a><div class="head-actions">',1),encoding='utf-8')
+    if topic == 'linear_equations':
+        page=page.replace('<div class="bottom"><button', '<div style="margin:4px 0 16px"><a class="hub-nav" href="how_to_start.html?topic=linear">Попробовать «Как начать?» · эксперимент</a></div><div class="bottom"><button', 1)
+    page=page.replace('<!doctype html>', '<!doctype html>\n<!-- SPDX-License-Identifier: GPL-3.0-or-later -->', 1)
+    (base/'trainers'/f'{topic}.html').write_text(page.replace('</style></head>', '.hub-nav{display:inline-flex;align-items:center;padding:9px 13px;border:1px solid #e8e0f2;background:white;color:#624b94;border-radius:12px;text-decoration:none;font-weight:800;font-size:13px;margin-left:auto}\n</style></head>').replace('<div class="head-actions">','<a class="hub-nav" href="../index.html">← Каталог</a><div class="head-actions">',1).replace('</head>', '<link rel="stylesheet" href="../assets/math.css"></head>').replace('<script>'+js+'</script>', '<script src="../assets/math.js"></script><script>'+js+'</script>'),encoding='utf-8')
 print('Built',len(topics),'standalone legacy pages in trainers/')

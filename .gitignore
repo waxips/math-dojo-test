@@ -2,3 +2,7 @@
 Thumbs.db
 __pycache__/
 *.pyc
+
+
+# Local browser regression screenshot
+tests/orientation_mobile.png

@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 const fs=require('fs'),vm=require('vm'),path=require('path');let src=fs.readFileSync(path.join(__dirname,'..','source','focused','engine.js'),'utf8');src=src.replace(/\}\)\(\);\s*$/, 'globalThis.testFns={makeSquare,makeZero};})();');
 const els={};const fake=id=>els[id]??(els[id]={textContent:'',innerHTML:'',classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
 const ctx={document:{getElementById:fake,body:{dataset:{topic:'identities'}}},console};vm.createContext(ctx);vm.runInContext(src,ctx);
